@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CA3084F2AA7AA81001B4840 /* HotelRoomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3084E2AA7AA81001B4840 /* HotelRoomUIView.swift */; };
 		2CFE4A952AA22E1300E7F923 /* HotelSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE4A942AA22E1300E7F923 /* HotelSwiftUIApp.swift */; };
 		2CFE4A992AA22E1700E7F923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE4A982AA22E1700E7F923 /* Assets.xcassets */; };
 		2CFE4A9C2AA22E1700E7F923 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE4A9B2AA22E1700E7F923 /* Preview Assets.xcassets */; };
 		2CFE4A9E2AA22E1700E7F923 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE4A9D2AA22E1700E7F923 /* Persistence.swift */; };
 		2CFE4AA12AA22E1700E7F923 /* HotelSwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE4A9F2AA22E1700E7F923 /* HotelSwiftUI.xcdatamodeld */; };
 		2CFE4AA82AA22F2600E7F923 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE4AA72AA22F2600E7F923 /* SwiftUIView.swift */; };
-		2CFE4AAC2AA3ABB400E7F923 /* GrayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE4AAB2AA3ABB400E7F923 /* GrayLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CA3084E2AA7AA81001B4840 /* HotelRoomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelRoomUIView.swift; sourceTree = "<group>"; };
 		2CFE4A912AA22E1300E7F923 /* HotelSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFE4A942AA22E1300E7F923 /* HotelSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelSwiftUIApp.swift; sourceTree = "<group>"; };
 		2CFE4A982AA22E1700E7F923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -24,7 +25,6 @@
 		2CFE4A9D2AA22E1700E7F923 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2CFE4AA02AA22E1700E7F923 /* HotelSwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotelSwiftUI.xcdatamodel; sourceTree = "<group>"; };
 		2CFE4AA72AA22F2600E7F923 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		2CFE4AAB2AA3ABB400E7F923 /* GrayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			children = (
 				2CFE4A942AA22E1300E7F923 /* HotelSwiftUIApp.swift */,
 				2CFE4AA72AA22F2600E7F923 /* SwiftUIView.swift */,
-				2CFE4AAB2AA3ABB400E7F923 /* GrayLabel.swift */,
+				2CA3084E2AA7AA81001B4840 /* HotelRoomUIView.swift */,
 				2CFE4A982AA22E1700E7F923 /* Assets.xcassets */,
 				2CFE4A9D2AA22E1700E7F923 /* Persistence.swift */,
 				2CFE4A9F2AA22E1700E7F923 /* HotelSwiftUI.xcdatamodeld */,
@@ -146,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CFE4AAC2AA3ABB400E7F923 /* GrayLabel.swift in Sources */,
+				2CA3084F2AA7AA81001B4840 /* HotelRoomUIView.swift in Sources */,
 				2CFE4AA12AA22E1700E7F923 /* HotelSwiftUI.xcdatamodeld in Sources */,
 				2CFE4A9E2AA22E1700E7F923 /* Persistence.swift in Sources */,
 				2CFE4AA82AA22F2600E7F923 /* SwiftUIView.swift in Sources */,
