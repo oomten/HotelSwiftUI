@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2CA3084F2AA7AA81001B4840 /* HotelRoomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3084E2AA7AA81001B4840 /* HotelRoomUIView.swift */; };
+		2CA308512AA7C3A0001B4840 /* WhiteContentCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA308502AA7C3A0001B4840 /* WhiteContentCustomView.swift */; };
+		2CA308532AA7C6FF001B4840 /* GreyBackgroundCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA308522AA7C6FF001B4840 /* GreyBackgroundCustomView.swift */; };
+		2CA308552AA7CA47001B4840 /* PicturesPlaceHolderCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA308542AA7CA47001B4840 /* PicturesPlaceHolderCV.swift */; };
+		2CA308572AA7D980001B4840 /* BookingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA308562AA7D980001B4840 /* BookingUIView.swift */; };
+		2CA308592AA8BA73001B4840 /* CardCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA308582AA8BA73001B4840 /* CardCustomView.swift */; };
+		2CA3085D2AA95B7D001B4840 /* HotelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3085C2AA95B7D001B4840 /* HotelViewModel.swift */; };
 		2CFE4A952AA22E1300E7F923 /* HotelSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE4A942AA22E1300E7F923 /* HotelSwiftUIApp.swift */; };
 		2CFE4A992AA22E1700E7F923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE4A982AA22E1700E7F923 /* Assets.xcassets */; };
 		2CFE4A9C2AA22E1700E7F923 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE4A9B2AA22E1700E7F923 /* Preview Assets.xcassets */; };
@@ -18,6 +24,12 @@
 
 /* Begin PBXFileReference section */
 		2CA3084E2AA7AA81001B4840 /* HotelRoomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelRoomUIView.swift; sourceTree = "<group>"; };
+		2CA308502AA7C3A0001B4840 /* WhiteContentCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteContentCustomView.swift; sourceTree = "<group>"; };
+		2CA308522AA7C6FF001B4840 /* GreyBackgroundCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyBackgroundCustomView.swift; sourceTree = "<group>"; };
+		2CA308542AA7CA47001B4840 /* PicturesPlaceHolderCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesPlaceHolderCV.swift; sourceTree = "<group>"; };
+		2CA308562AA7D980001B4840 /* BookingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUIView.swift; sourceTree = "<group>"; };
+		2CA308582AA8BA73001B4840 /* CardCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCustomView.swift; sourceTree = "<group>"; };
+		2CA3085C2AA95B7D001B4840 /* HotelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelViewModel.swift; sourceTree = "<group>"; };
 		2CFE4A912AA22E1300E7F923 /* HotelSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFE4A942AA22E1300E7F923 /* HotelSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelSwiftUIApp.swift; sourceTree = "<group>"; };
 		2CFE4A982AA22E1700E7F923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +72,12 @@
 				2CFE4A942AA22E1300E7F923 /* HotelSwiftUIApp.swift */,
 				2CFE4AA72AA22F2600E7F923 /* SwiftUIView.swift */,
 				2CA3084E2AA7AA81001B4840 /* HotelRoomUIView.swift */,
+				2CA308562AA7D980001B4840 /* BookingUIView.swift */,
+				2CA3085C2AA95B7D001B4840 /* HotelViewModel.swift */,
+				2CA308582AA8BA73001B4840 /* CardCustomView.swift */,
+				2CA308542AA7CA47001B4840 /* PicturesPlaceHolderCV.swift */,
+				2CA308502AA7C3A0001B4840 /* WhiteContentCustomView.swift */,
+				2CA308522AA7C6FF001B4840 /* GreyBackgroundCustomView.swift */,
 				2CFE4A982AA22E1700E7F923 /* Assets.xcassets */,
 				2CFE4A9D2AA22E1700E7F923 /* Persistence.swift */,
 				2CFE4A9F2AA22E1700E7F923 /* HotelSwiftUI.xcdatamodeld */,
@@ -146,10 +164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA308532AA7C6FF001B4840 /* GreyBackgroundCustomView.swift in Sources */,
+				2CA308552AA7CA47001B4840 /* PicturesPlaceHolderCV.swift in Sources */,
 				2CA3084F2AA7AA81001B4840 /* HotelRoomUIView.swift in Sources */,
 				2CFE4AA12AA22E1700E7F923 /* HotelSwiftUI.xcdatamodeld in Sources */,
+				2CA308512AA7C3A0001B4840 /* WhiteContentCustomView.swift in Sources */,
+				2CA308592AA8BA73001B4840 /* CardCustomView.swift in Sources */,
 				2CFE4A9E2AA22E1700E7F923 /* Persistence.swift in Sources */,
 				2CFE4AA82AA22F2600E7F923 /* SwiftUIView.swift in Sources */,
+				2CA308572AA7D980001B4840 /* BookingUIView.swift in Sources */,
+				2CA3085D2AA95B7D001B4840 /* HotelViewModel.swift in Sources */,
 				2CFE4A952AA22E1300E7F923 /* HotelSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

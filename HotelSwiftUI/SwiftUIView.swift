@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwiftUIView: View {
+    @StateObject var hotelViewModel = HotelViewModel()
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -27,11 +28,11 @@ struct SwiftUIView: View {
                                                     .aspectRatio(contentMode: .fill)
                                                     .frame(minWidth: 343, minHeight: 297)
                                                     .clipped()
-                                                    
+                                                
                                             )
                                             .cornerRadius(15)
                                         Spacer(minLength: 16)
-                                            
+                                        
                                     }
                                     HStack(alignment: .center, spacing: 2) {
                                         Image(systemName: "star.fill")
@@ -50,7 +51,7 @@ struct SwiftUIView: View {
                                     .background(Color(red: 1, green: 0.78, blue: 0).opacity(0.2))
                                     .cornerRadius(5)
                                     
-                                    Text("Steigenberger Makadi")
+                                    Text("")
                                         .font(
                                             Font.custom("SF Pro Display", size: 22)
                                                 .weight(.medium)
@@ -92,7 +93,7 @@ struct SwiftUIView: View {
                         .cornerRadius(12)
                         Spacer(minLength: 8)
                         
-                        // 2 Part
+                        // 2 Part
                         ZStack {
                             VStack {
                                 VStack(alignment: .leading) {
@@ -303,8 +304,8 @@ struct SwiftUIView: View {
                             NavigationLink(destination: HotelRoomUIView(), label: {
                                 Text("К выбору номера")
                                     .font(
-                                    Font.custom("SF Pro Display", size: 16)
-                                    .weight(.medium)
+                                        Font.custom("SF Pro Display", size: 16)
+                                            .weight(.medium)
                                     )
                                     .kerning(0.1)
                                     .multilineTextAlignment(.center)
@@ -312,7 +313,7 @@ struct SwiftUIView: View {
                                     .frame(minWidth: 343, maxWidth: .infinity, minHeight: 48, alignment: .center)
                                     .background(Color.blue)
                                     .cornerRadius(16)
-                                    
+                                
                             })
                             .padding(16)
                             .background(Color.white)
@@ -325,34 +326,26 @@ struct SwiftUIView: View {
                             Rectangle()
                                 .inset(by: -0.5)
                                 .stroke(Color(red: 0.91, green: 0.91, blue: 0.93), lineWidth: 1)
-                               
+                            
                         )
                         
                     }
-                    
                 }
-                .frame(width: .infinity, height: .infinity)
+                .frame(minWidth: .infinity, minHheight: .infinity)
                 .background(Color((UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00))))
                 .edgesIgnoringSafeArea(.bottom)
             }
             .navigationBarTitle("Отель", displayMode: .inline)
         }
-     
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    struct SwiftUIView_Previews: PreviewProvider {
-        static var previews: some View {
-            SwiftUIView()
-            
+        .task {
+           await hotelViewModel.getData()
         }
     }
 }
+
+struct SwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        SwiftUIView()
+    }
+}
+
