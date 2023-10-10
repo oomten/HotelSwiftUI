@@ -9,8 +9,14 @@ import SwiftUI
 
 struct BookingUIView: View {
     @State private var hotel: HotelStructure?
+    // Phone field properties
     @State private var phoneNumber = ""
-    private let phoneNumberFormatter = NumberFormatter()
+//    @State var phoneNumberPlaceholder = "Введите номер телефона"
+    @State var isEditing = false
+//    private let phoneNumberFormatter = NumberFormatter()
+    
+    
+    
     
     struct KeyValueView: View {
         let key: String
@@ -123,27 +129,29 @@ struct BookingUIView: View {
                                 
                                 Spacer(minLength: 0)
                             }
+                            // Phone number starts here
                             VStack {
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("Номер телефона")
-                                        .font(.footnote)
-                                        .foregroundStyle(Color(.systemGray))
-                                    
-                                    TextField("89199222240", text: $phoneNumber )
-                                        .font(.title3)
-                                        .fontWeight(.regular)
+                                    TextField(isEditing ? "+ 7 " : "Введите номер телефона", text: $phoneNumber)
+                                        .font(.title)
+                                        .foregroundStyle(Color.black)
                                         .keyboardType(.phonePad)
                                         .autocapitalization(.none)
                                         .textContentType(.telephoneNumber)
-                                        .frame(width: .infinity, height: 16, alignment: .leading)
+                                        .onTapGesture {
+                                            if !isEditing {
+                                                self.isEditing = true
+                                                self.phoneNumber = "+ 7 "
+                                            }
+                                        }
+                                        
                                 }
-                                
-                                .padding(0)
                             }
                             .padding(16)
                             .frame(width: geometry.size.width - 32, height: 52, alignment: .leading)
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
+                            // Phone number ends here
                         }
                     }
                 }
