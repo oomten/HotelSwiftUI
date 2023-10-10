@@ -11,9 +11,11 @@ struct BookingUIView: View {
     @State private var hotel: HotelStructure?
     // Phone field properties
     @State private var phoneNumber = ""
-//    @State var phoneNumberPlaceholder = "Введите номер телефона"
+    @State private var mailAddress = ""
+    //    @State var phoneNumberPlaceholder = "Введите номер телефона"
     @State var isEditing = false
-//    private let phoneNumberFormatter = NumberFormatter()
+    //    private let phoneNumberFormatter = NumberFormatter()
+    @FocusState private var isFocused: Bool
     
     
     
@@ -85,7 +87,6 @@ struct BookingUIView: View {
                                         .frame(width: geometry.size.width - 32, alignment: .topLeading)
                                         .padding(.bottom, 5)
                                 }
-                                
                             }
                         }
                     }
@@ -94,71 +95,103 @@ struct BookingUIView: View {
                 .background(Color(.white))
                 .frame(width: geometry.size.width)
                 .cornerRadius(16)
-                
                 Spacer()
                 //MARK: - 2 Part
-                VStack {
-                    ZStack {
-                        VStack(spacing: 16) {
-                            KeyValueView(key: "Вылет из", value: "Санкт-Петербург")
-                            KeyValueView(key: "Страна, город", value: "Египет, Хургада")
-                            KeyValueView(key: "Даты", value: "19.09.2023 – 27.09.2023")
-                            KeyValueView(key: "Кол-во ночей", value: "7 ночей")
-                            KeyValueView(key: "Отель", value: "Steigenberger Makadi")
-                            KeyValueView(key: "Номер", value: "Стандартный с видом на бассейн или сад")
-                            KeyValueView(key: "Питание", value: "Все включено")
-                        }
-                    }
+                WhiteCard {
+                    KeyValueView(key: "Вылет из", value: "Санкт-Петербург")
+                    KeyValueView(key: "Страна, город", value: "Египет, Хургада")
+                    KeyValueView(key: "Даты", value: "19.09.2023 – 27.09.2023")
+                    KeyValueView(key: "Кол-во ночей", value: "7 ночей")
+                    KeyValueView(key: "Отель", value: "Steigenberger Makadi")
+                    KeyValueView(key: "Номер", value: "Стандартный с видом на бассейн или сад")
+                    KeyValueView(key: "Питание", value: "Все включено")
                 }
-                .padding(16)
-                .background(Color(.white))
-                .frame(width: geometry.size.width)
-                .cornerRadius(16)
-                
                 Spacer()
-                
                 // MARK: - 3 Part
-                VStack {
-                    ZStack {
-                        VStack(spacing: 16) {
-                            VStack {
-                                Text("Информация о покупателе")
-                                    .font(.title2)
-                                    .foregroundColor(.black)
-                                    .frame(width: geometry.size.width - 32 , alignment: .topLeading)
-                                
-                                Spacer(minLength: 0)
-                            }
-                            // Phone number starts here
-                            VStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    TextField(isEditing ? "+ 7 " : "Введите номер телефона", text: $phoneNumber)
-                                        .font(.title)
-                                        .foregroundStyle(Color.black)
-                                        .keyboardType(.phonePad)
-                                        .autocapitalization(.none)
-                                        .textContentType(.telephoneNumber)
-                                        .onTapGesture {
-                                            if !isEditing {
-                                                self.isEditing = true
-                                                self.phoneNumber = "+ 7 "
-                                            }
-                                        }
-                                        
-                                }
-                            }
-                            .padding(16)
-                            .frame(width: geometry.size.width - 32, height: 52, alignment: .leading)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                            // Phone number ends here
-                        }
+                WhiteCard {
+                    VStack {
+                        Text("Информация о покупателе")
+                            .font(.title2)
+                            .foregroundColor(.black)
+                            .frame(width: geometry.size.width - 32 , alignment: .topLeading)
+                        
+                        Spacer(minLength: 0)
                     }
+                    // Phone number starts here
+                    VStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            TextField(isEditing ? "+ 7 " : "Номер телефона", text: $phoneNumber)
+                                .font(.title2)
+                                .foregroundStyle(Color.black)
+                                .keyboardType(.phonePad)
+                                .focused($isFocused)
+                                .autocapitalization(.none)
+                                .textContentType(.telephoneNumber)
+                                .onTapGesture {
+                                    if !isEditing {
+                                        self.isEditing = true
+                                        self.phoneNumber = "+ 7 "
+                                    }
+                                }
+                                .toolbar {
+                                    ToolbarItem(placement: .keyboard) {
+                                        Button("✅ Готово") {
+                                            isFocused = false
+                                        }
+                                    }
+                                }
+                        }
+                        
+                    }
+                    .padding(16)
+                    .frame(width: geometry.size.width - 32, height: 52, alignment: .leading)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    // Phone number ends here
+                    VStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            TextField("Электронная почта", text: $mailAddress)
+                        }
+                        .font(.title2)
+                        
+                    }
+                    .padding(16)
+                    .frame(width: geometry.size.width - 32, height: 52, alignment: .leading)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
                 }
-                .padding(16)
-                .background(Color(.white))
-                .frame(width: geometry.size.width)
-                .cornerRadius(16)
+                // MARK: - 4 Part
+                WhiteCard {
+                    VStack {
+                        Text("Первый турист")
+                            .font(.title2)
+                            .foregroundColor(.black)
+                            .frame(width: geometry.size.width - 32 , alignment: .topLeading)
+                        
+                        
+                    }
+                    VStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            TextField("Имя", text: $mailAddress)
+                        }
+                        .font(.title2)
+                    }
+                    .padding(16)
+                    .frame(width: geometry.size.width - 32, height: 52, alignment: .leading)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    
+                    VStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            TextField("Фамилия", text: $mailAddress)
+                        }
+                        .font(.title2)
+                    }
+                    .padding(16)
+                    .frame(width: geometry.size.width - 32, height: 52, alignment: .leading)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                }
             }
             .background(Color(.systemGray6))
             .navigationBarTitle("Бронирование", displayMode: .inline)

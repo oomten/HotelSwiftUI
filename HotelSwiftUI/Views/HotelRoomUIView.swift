@@ -13,7 +13,7 @@ struct HotelRoomUIView: View {
             ScrollView(showsIndicators: false){
                 GreyBackgroundCustomView {
                    
-                    WhiteContentCustomView {
+                    WhiteCard {
                         VStack {
                             Rectangle()
                                 .foregroundColor(.clear)
