@@ -5,40 +5,93 @@
 //  Created by Denis Nurislamov on 01.09.2023.
 //
 
+
+
 import SwiftUI
 
 struct SwiftUIView: View {
-    @StateObject var hotelViewModel = HotelViewModel()
+    
+    
+    @State private var hotel: HotelStructure?
+    let widthOfScreen = UIScreen.main.bounds.width - 32
+    let heigtOfScreen = 280.00
+    
+    func formattedNumber(_ number: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = " "
+        return numberFormatter.string(from: NSNumber(value: number)) ?? ""
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack {
                     VStack {
-                        // 1 Part
+                        //MARK: - 1 Part
                         ZStack {
-                            VStack  {
+                            VStack {
                                 VStack(alignment: .leading) {
                                     VStack {
-                                        Rectangle()
-                                            .foregroundColor(.clear)
-                                            .frame(minWidth: 343, minHeight: 297)
-                                            .background(
-                                                Image("HotelPlaceholder")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fill)
-                                                    .frame(minWidth: 343, minHeight: 297)
-                                                    .clipped()
-                                                
-                                            )
-                                            .cornerRadius(15)
-                                        Spacer(minLength: 16)
+                                        ScrollView(.horizontal, showsIndicators: false) {
+                                            LazyHStack(spacing: 0) {
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .foregroundColor(.clear)
+                                                    .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)
+                                                    .background(
+                                                        AsyncImage(url: URL(string: hotel?.imageUrls[0] ?? "")) {
+                                                            image in image
+                                                                .resizable()
+                                                                .aspectRatio(contentMode: .fill)
+                                                                .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)
+                                                                .cornerRadius(16)
+                                                                .clipped()
+                                                        } placeholder: {
+                                                            ProgressView()
+                                                                .scaleEffect(2)
+                                                            Rectangle()
+                                                                .foregroundColor(.clear)
+                                                                .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)})
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .foregroundColor(.clear)
+                                                    .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)
+                                                    .background(
+                                                        AsyncImage(url: URL(string: hotel?.imageUrls[1] ?? "")) {
+                                                            image in image
+                                                                .resizable()
+                                                                .aspectRatio(contentMode: .fill)
+                                                                .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)
+                                                                .cornerRadius(16)
+                                                                .clipped()
+                                                        } placeholder: {
+                                                            ProgressView()
+                                                                .scaleEffect(2)
+                                                            Rectangle()
+                                                                .foregroundColor(.clear)
+                                                                .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)})
+                                            }
+                                            
+                                        }
                                         
                                     }
+                                    .frame(minWidth: 375, maxWidth: .infinity)
+                                    Spacer(minLength: 16)
+                                    
                                     HStack(alignment: .center, spacing: 2) {
                                         Image(systemName: "star.fill")
                                             .foregroundColor(Color(red: 1, green: 0.66, blue: 0))
                                             .imageScale(.small)
-                                        Text("5 Превосходно")
+                                        
+                                        
+                                        Text(String(hotel?.rating ?? 0))
+                                            .font(
+                                                Font.custom("SF Pro Display", size: 16)
+                                                    .weight(.medium)
+                                            )
+                                            .multilineTextAlignment(.center)
+                                            .foregroundColor(Color(red: 1, green: 0.66, blue: 0))
+                                        
+                                        Text(hotel?.ratingName ?? "Rating Name")
                                             .font(
                                                 Font.custom("SF Pro Display", size: 16)
                                                     .weight(.medium)
@@ -51,7 +104,7 @@ struct SwiftUIView: View {
                                     .background(Color(red: 1, green: 0.78, blue: 0).opacity(0.2))
                                     .cornerRadius(5)
                                     
-                                    Text("")
+                                    Text("Steigenberger Makadi")
                                         .font(
                                             Font.custom("SF Pro Display", size: 22)
                                                 .weight(.medium)
@@ -61,7 +114,7 @@ struct SwiftUIView: View {
                                     
                                     Spacer(minLength: 8)
                                     
-                                    Text("Madinat Makadi, Safaga Road, Makadi Bay, Египет")
+                                    Text(hotel?.adress ?? "Address Placeholder")
                                         .font(
                                             Font.custom("SF Pro Display", size: 14)
                                                 .weight(.medium)
@@ -71,14 +124,25 @@ struct SwiftUIView: View {
                                         .padding(.bottom, 5)
                                     
                                     HStack(alignment: .lastTextBaseline){
-                                        Text("от 134 673 ₽")
+                                        Text("от")
                                             .font(
                                                 Font.custom("SF Pro Display", size: 30)
                                                     .weight(.semibold)
                                             )
                                             .foregroundColor(.black)
                                         
-                                        Text("за тур с перелётом")
+                                        Text(formattedNumber(hotel?.minimalPrice ?? 0))
+                                            .font(
+                                                Font.custom("SF Pro Display", size: 30)
+                                                    .weight(.semibold)
+                                            )
+                                            .foregroundColor(.black)
+                                        Text("₽")
+                                            .font(.system(size: 30))
+                                        
+                                            .foregroundColor(.black)
+                                        
+                                        Text(hotel?.priceForIt ?? "Placeholder")
                                             .font(Font.custom("SF Pro Display", size: 16))
                                             .foregroundColor(Color(red: 0.51, green: 0.53, blue: 0.59))
                                     }
@@ -93,7 +157,7 @@ struct SwiftUIView: View {
                         .cornerRadius(12)
                         Spacer(minLength: 8)
                         
-                        // 2 Part
+                        //MARK: - 2 Part
                         ZStack {
                             VStack {
                                 VStack(alignment: .leading) {
@@ -175,7 +239,7 @@ struct SwiftUIView: View {
                                     
                                     Spacer(minLength: 16)
                                     
-                                    Text("Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!")
+                                    Text(hotel?.aboutTheHotel.description ?? "Description")
                                         .font(Font.custom("SF Pro Display", size: 16))
                                         .foregroundColor(.black.opacity(0.9))
                                         .frame(minWidth: 343, alignment: .topLeading)
@@ -299,8 +363,9 @@ struct SwiftUIView: View {
                         .cornerRadius(12)
                         Spacer(minLength: 12)
                         
-                        // 3 Part
+                        //MARK: - 3 Part
                         ZStack {
+                            //MARK: - Navigation Button
                             NavigationLink(destination: HotelRoomUIView(), label: {
                                 Text("К выбору номера")
                                     .font(
@@ -320,32 +385,37 @@ struct SwiftUIView: View {
                             
                             
                         }
-                        .frame(minWidth: 375, maxWidth: .infinity, minHeight: 88)
+                        //                        .frame(minWidth: 375, maxWidth: .infinity, minHeight: 88)
                         .background(.white)
                         .overlay(
                             Rectangle()
                                 .inset(by: -0.5)
-                                .stroke(Color(red: 0.91, green: 0.91, blue: 0.93), lineWidth: 1)
-                            
-                        )
-                        
+                                .stroke(Color(red: 0.91, green: 0.91, blue: 0.93), lineWidth: 1))
                     }
                 }
-                .frame(minWidth: .infinity, minHheight: .infinity)
-                .background(Color((UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00))))
+                .background(Color(.systemGray6))
                 .edgesIgnoringSafeArea(.bottom)
             }
             .navigationBarTitle("Отель", displayMode: .inline)
         }
         .task {
-           await hotelViewModel.getData()
+            do {
+                hotel = try await getHotel()
+            } catch HotelError.invalidURL{
+                print("Invalid URL")
+            } catch HotelError.invalidData {
+                print("Invalid Data")
+            } catch HotelError.invalidResponse {
+                print("Invalid Response")
+            } catch {
+                print("Unexpected Error")
+            }
         }
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct Preview: PreviewProvider {
     static var previews: some View {
         SwiftUIView()
     }
 }
-
