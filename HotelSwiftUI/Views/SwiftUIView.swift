@@ -11,7 +11,6 @@ import SwiftUI
 
 struct SwiftUIView: View {
     
-    
     @State private var hotel: HotelStructure?
     let widthOfScreen = UIScreen.main.bounds.width - 32
     let heigtOfScreen = 280.00
@@ -70,81 +69,45 @@ struct SwiftUIView: View {
                                                                 .foregroundColor(.clear)
                                                                 .frame(minWidth: widthOfScreen, minHeight: heigtOfScreen)})
                                             }
-                                            
                                         }
-                                        
                                     }
                                     .frame(minWidth: 375, maxWidth: .infinity)
+                                    
+                                    HotelView(hotel: hotel)
+                                    
                                     Spacer(minLength: 16)
                                     
-                                    HStack(alignment: .center, spacing: 2) {
-                                        Image(systemName: "star.fill")
-                                            .foregroundColor(Color(red: 1, green: 0.66, blue: 0))
-                                            .imageScale(.small)
-                                        
-                                        
-                                        Text(String(hotel?.rating ?? 0))
-                                            .font(
-                                                Font.custom("SF Pro Display", size: 16)
-                                                    .weight(.medium)
-                                            )
-                                            .multilineTextAlignment(.center)
-                                            .foregroundColor(Color(red: 1, green: 0.66, blue: 0))
-                                        
-                                        Text(hotel?.ratingName ?? "Rating Name")
-                                            .font(
-                                                Font.custom("SF Pro Display", size: 16)
-                                                    .weight(.medium)
-                                            )
-                                            .multilineTextAlignment(.center)
-                                            .foregroundColor(Color(red: 1, green: 0.66, blue: 0))
-                                    }
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 5)
-                                    .background(Color(red: 1, green: 0.78, blue: 0).opacity(0.2))
-                                    .cornerRadius(5)
+                                    
+                                    RatingSubView(rating: hotel?.rating, ratingName: hotel?.ratingName)
                                     
                                     Text("Steigenberger Makadi")
-                                        .font(
-                                            Font.custom("SF Pro Display", size: 22)
-                                                .weight(.medium)
-                                        )
-                                        .foregroundColor(.black)
-                                        .frame(width: 343, alignment: .topLeading)
+                                        .font(.title2)
+                                        .fontWeight(.medium)
+                                        .frame(width: 343, alignment: .leading)
                                     
                                     Spacer(minLength: 8)
                                     
                                     Text(hotel?.adress ?? "Address Placeholder")
-                                        .font(
-                                            Font.custom("SF Pro Display", size: 14)
-                                                .weight(.medium)
-                                        )
-                                        .foregroundColor(Color(red: 0.05, green: 0.45, blue: 1))
-                                        .frame(width: 343, alignment: .topLeading)
+                                        .font(.footnote)
+                                        .foregroundColor(.blue)
+                                        .frame(width: 343, alignment: .leading)
                                         .padding(.bottom, 5)
                                     
                                     HStack(alignment: .lastTextBaseline){
                                         Text("от")
-                                            .font(
-                                                Font.custom("SF Pro Display", size: 30)
-                                                    .weight(.semibold)
-                                            )
-                                            .foregroundColor(.black)
+                                            .font(.title)
+                                            .fontWeight(.semibold)
                                         
                                         Text(formattedNumber(hotel?.minimalPrice ?? 0))
-                                            .font(
-                                                Font.custom("SF Pro Display", size: 30)
-                                                    .weight(.semibold)
-                                            )
-                                            .foregroundColor(.black)
+                                            .font(.title)
+                                            .fontWeight(.semibold)
                                         Text("₽")
-                                            .font(.system(size: 30))
-                                        
-                                            .foregroundColor(.black)
+                                            .font(.title)
+                                            .fontWeight(.semibold)
                                         
                                         Text(hotel?.priceForIt ?? "Placeholder")
-                                            .font(Font.custom("SF Pro Display", size: 16))
-                                            .foregroundColor(Color(red: 0.51, green: 0.53, blue: 0.59))
+                                            .font(.body)
+                                            .foregroundColor(Color(.systemGray))
                                     }
                                     Spacer(minLength: 16)
                                 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct WhiteCard<Content: View>: View {
+struct WhiteCardSubView<Content: View>: View {
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
@@ -23,6 +23,5 @@ struct WhiteCard<Content: View>: View {
         .background(Color(.white))
         .frame(minWidth: 375, maxWidth: .infinity)
         .cornerRadius(16)
-        
     }
 }

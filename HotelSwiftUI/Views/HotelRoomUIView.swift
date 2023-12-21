@@ -13,7 +13,7 @@ struct HotelRoomUIView: View {
             ScrollView(showsIndicators: false){
                 GreyBackgroundCustomView {
                    
-                    WhiteCard {
+                    WhiteCardSubView {
                         VStack {
                             Rectangle()
                                 .foregroundColor(.clear)
@@ -117,7 +117,7 @@ struct HotelRoomUIView: View {
                         }
                         VStack {
                             // MARK: - Navigation Button
-                            NavigationLink(destination: BookingUIView(), label: {
+                            NavigationLink(destination: BookingUIView(hotel: .constant(nil)), label: {
                                 Text("Выбрать номер")
                                     .font(
                                     Font.custom("SF Pro Display", size: 16)
