@@ -25,3 +25,22 @@ struct WhiteCardSubView<Content: View>: View {
         .cornerRadius(16)
     }
 }
+
+struct WhiteCardNoSpacingSubView<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            content
+        }
+        .padding(16)
+        .background(Color(.white))
+        .frame(minWidth: 375, maxWidth: .infinity)
+        .cornerRadius(16)
+    }
+}
+

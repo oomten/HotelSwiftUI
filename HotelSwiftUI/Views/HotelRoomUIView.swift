@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct HotelRoomUIView: View {
+    
+//    @State private var hotelRoom: HotelRoomStructure?
+    
     var body: some View {
-        
             ScrollView(showsIndicators: false){
                 GreyBackgroundCustomView {
-                   
                     WhiteCardSubView {
                         VStack {
                             Rectangle()
@@ -24,8 +25,6 @@ struct HotelRoomUIView: View {
                                         .aspectRatio(contentMode: .fill)
                                         .frame(minWidth: 343, minHeight: 297)
                                         .clipped()
-                                    
-
                                 )
                                 .cornerRadius(15)
                             Spacer(minLength: 16)
@@ -115,6 +114,7 @@ struct HotelRoomUIView: View {
                             }
                            
                         }
+                        Spacer(minLength: 16)
                         VStack {
                             // MARK: - Navigation Button
                             NavigationLink(destination: BookingUIView(hotel: .constant(nil)), label: {
@@ -142,8 +142,7 @@ struct HotelRoomUIView: View {
     }
 }
 
-struct HotelRoomUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        HotelRoomUIView()
-    }
+#Preview {
+    HotelRoomUIView()
 }
+

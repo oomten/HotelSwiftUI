@@ -54,7 +54,6 @@ struct BookingUIView: View {
                 // MARK: - 3 Part
                 WhiteCardSubView {
                     SectionNameSubView(width: geoWidth, headlineName: "Информация о покупателе")
-                    // Phone number starts here
                     FillFormSubView(width: geoWidth) {
                         TextField(isEditing ? "+ 7 " : "Номер телефона", text: $phoneNumber)
                             .font(.title2)
@@ -158,8 +157,7 @@ struct BookingUIView: View {
                 .overlay(
                     Rectangle()
                         .inset(by: -0.5)
-                        .stroke(Color(.systemGray5), lineWidth: 1)
-                )
+                        .stroke(Color(.systemGray5), lineWidth: 1))
             }
             .background(Color(.systemGray6))
             .navigationBarTitle("Бронирование", displayMode: .inline)
@@ -221,22 +219,6 @@ struct FillFormSubView<Content: View>: View {
         .frame(width: width, height: 52, alignment: alignment)
         .background(Color(.systemGray6))
         .cornerRadius(10)
-    }
-}
-
-struct SectionNameSubView: View {
-    
-    let width: CGFloat
-    let alignment = Alignment.topLeading
-    let headlineName: String
-    
-    var body: some View {
-        VStack {
-            Text(headlineName)
-                .font(.title2)
-                .foregroundColor(.black)
-                .frame(width: width, alignment: alignment)
-        }
     }
 }
 

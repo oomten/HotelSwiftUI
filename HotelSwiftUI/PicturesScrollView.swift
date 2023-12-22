@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PicturesScrollView: View {
+    
+    var hotel: HotelStructure?
+    
     var body: some View {
         TabView {
             ForEach(MockData.items) { item in
@@ -17,8 +20,7 @@ struct PicturesScrollView: View {
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-//        .indexViewStyle(.page)
-//        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .frame(height: 300)
         .cornerRadius(16)
         .padding()
